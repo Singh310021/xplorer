@@ -1,0 +1,29 @@
+{% include "navbar.html" %}
+{% load crispy_forms_tags %}
+<style>
+.yes{
+    background-color: rgb(5, 0, 5);
+    color: rgb(245, 226, 226);
+}
+textarea#id_Address {
+    height: 100px;
+}
+</style>
+<div class="container yes mt-5">
+    <h1 class="text-center">GUIDE REGISTRATION</h1>
+
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="mian text-center">
+
+            <button type="submit" class=" mt-3 btn btn-danger" >Submit</button>
+        </div>
+    </form>
+    <script>
+        let a = document.getElementById("id_Username")
+        a.value="{{user}}"
+        let b = document.getElementById("id_Email_id")
+        b.value = '{{user.email}}'
+    </script>
+</div>

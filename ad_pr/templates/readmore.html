@@ -1,0 +1,92 @@
+{% include "navbar.html" %}
+{% block content %}
+
+<style>
+    .guidecard {
+        height: 200px;
+        object-fit: contain;
+    }
+
+    .imgssss {
+        height: 350px;
+        /* overflow: scroll; */
+        object-fit: cover;
+    }
+</style>
+
+<div class="container my-5">
+    <div class="row my-5 mt-5">
+
+        <div class="col-lg-7">
+            <h4 class="text-primary my-4">About:</h4>
+            <p class="my-2">{{data.desc|safe}}</p>
+        </div>
+        <div class="col-lg-5 ">
+            <h1 class="text-dark text-center">{{data.title}}</h1>
+            <div class="imgssss ">
+
+                <img src="{{data.image1.url}}" width="100%" class=" my-2" alt="">
+
+                {% if data.image2 or data.image3 %}
+                <style>
+                    .imgssss {
+                        overflow: scroll;
+                    }
+                </style>
+                {% endif %}
+                {% if data.image2 %}
+                <img src="{{data.image2.url}}" width="100%" class="my-3" alt="">
+                {% endif %}
+                {% if data.image3 %}
+                <img src="{{data.image3.url}}" width="100%" class="" alt="">
+                {% endif %}
+
+            </div>
+            <h4 class="text-success mt-3">Place: {{data.place}}</h4>
+            <h4 class="text-danger">Activity: {{data.activity}}</h4>
+
+        </div>
+    </div>
+
+    <div class="row">
+        {% if not guide %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>No Guide Available</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        <h2 class="text-center">Guides Available</h2>
+        {% for i in guide %}
+        <div class="col-lg-3">
+            <div class="card mx-3">
+                <img src="{{i.guide_image.url}}" class="card-img-top guidecard" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{i.Username}}</h5>
+                    <p class="card-text">{{i.Guide_location}}</p>
+                    <p class="card-text">{{i.guide_proffesion}}</p>
+                    <p class="card-text">{{i.Address}}</p>
+                    <p class="card-text">{{i.mob_number}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <h2 class="text-center">Offers Available</h2>
+        {% for i in offer %}
+        <div class="col-lg-3">
+            <div class="card mx-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{i.place}}</h5>
+                    <p class="card-text">{{i.Duration}} Days</p>
+                    <p class="card-text">{{i.Price}}</p>
+                    <p class="card-text">{{i.Description}}</p>
+                    <button class="btn btn-outline-danger">Book Now</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

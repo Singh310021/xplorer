@@ -1,0 +1,25 @@
+{% include "navbar.html" %}
+<div class="container">
+    {% for i in data %}
+    <div class="row">
+        <div class="col-lg-4 p-0 mt-5">
+            <img class="img1" src="{{i.guide_image.url}}" width="100%" alt="...">
+        </div>
+        <div class="col-lg-8 p-2 mt-5">
+            
+                <h6 class="text-center">Name  -   {{i.Username}}<br>
+                Mobile No.  -  {{i.mob_number}}<br>
+                Addhar No.  -  {{i.Addhar_number}}<br>
+                Email Id   -  {{i.Email_id}}<br>
+                Guide Location  - {{i.Guide_location}}<br>
+                Address       - {{i.Address}}<br>
+                language  -  {{i.language}}<br>
+                gender  - {{i.gender}}<br>
+                Profession -{{i.guide_proffesion}}<br>
+                Status - {{i.status}}<br></h6>
+           
+        </div>
+    </div>
+    {% endfor %}
+
+</div>

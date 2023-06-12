@@ -1,0 +1,33 @@
+{% extends 'navbar.html' %}
+{% block content %}
+
+
+<style>
+    body{
+        background-color: black;
+    }
+</style>
+
+<div class="container">
+
+    <div class="row my-5 text-center">
+        {% if not data %}
+    <h4 class="text-center">No Results</h4>
+    {% endif %}
+    {% for i in data %}
+    <div class="col-lg-4 my-3">
+        <div class="card mx-3">
+            <img src="{{i.image1.url}}" class="card-img-top cardmainimg" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{i.title}}</h5>
+              <p class="card-text">{{i.place}}</p>
+              <p class="card-text">{{i.activity}}</p>
+              <a href="{% url 'rm' i.id %}" class="btn btn-primary btn-sm ">Read More</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+</div>
+    
+{% endblock %}
